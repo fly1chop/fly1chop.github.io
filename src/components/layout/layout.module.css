@@ -1,0 +1,22 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.layout > main {
+  flex: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  padding-top: 10rem;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
