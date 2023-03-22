@@ -1,0 +1,32 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.layout > main {
+  flex: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  padding-top: 10rem;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer {
+  background-color: var(--background-page);
+  color: var(--text-light);
+  border-top: 1px solid var(--border-main);
+  padding: 2rem 0;
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
+}
