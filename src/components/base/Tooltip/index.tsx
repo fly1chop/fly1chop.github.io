@@ -40,3 +40,5 @@ const ToolTip = ({
 };
 
 export default ToolTip;
+
+// https://paladini.dev/posts/how-to-make-an-extremely-reusable-tooltip-component-with-react--and-nothing-else/

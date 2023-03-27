@@ -1,11 +1,12 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .layout > main {
   flex: auto;
+  padding-top: 10rem;
 }
 
 .header {
