@@ -1,5 +1,5 @@
 .tagList {
   display: flex;
   justify-content: flex-start;
-  width: 50%;
+  width: calc(33.3% + 8rem);
 }

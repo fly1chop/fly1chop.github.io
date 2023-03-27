@@ -1,14 +1,15 @@
+import Tag from '../base/Tag';
 import styles from './tag-list.module.css';
+
+const tags = ['Next', 'React', 'JS', 'TS', 'HTML'];
 
 const TagList = () => {
   return (
     <div className={styles.tagList}>
       <ul>
-        <li>Next</li>
-        <li>React</li>
-        <li>JS</li>
-        <li>TS</li>
-        <li>HTML</li>
+        {tags.map(tag => (
+          <Tag name={tag} fill={true} size="large" key={tag} />
+        ))}
       </ul>
     </div>
   );
