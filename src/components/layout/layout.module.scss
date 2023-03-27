@@ -2,11 +2,11 @@
   display: flex;
   min-height: 100vh;
   gap: 4rem;
-}
 
-.layout > main {
-  flex: auto;
-  padding-top: 10rem;
+  > main {
+    flex: auto;
+    padding-top: 10rem;
+  }
 }
 
 .header {

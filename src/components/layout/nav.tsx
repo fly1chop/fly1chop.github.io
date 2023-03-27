@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './layout.module.css';
+import styles from './layout.module.scss';
 import ToolTip from '../base/Tooltip';
 
 const Nav = () => {
