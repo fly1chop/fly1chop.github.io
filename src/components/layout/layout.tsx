@@ -1,6 +1,6 @@
 import Footer from './footer';
 import Nav from './nav';
-import styles from './layout.module.css';
+import styles from './layout.module.scss';
 
 const Layout = ({ children }: React.PropsWithChildren) => {
   return (
