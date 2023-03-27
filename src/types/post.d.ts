@@ -25,12 +25,12 @@ type PropertyValueMap = PostResult['properties'];
 type PropertyValue = PropertyValueMap[string];
 type PropertyValueType = PropertyValue['type'];
 
-export type ExtractedPropertyValue<TType extends PropertyValueType> = Extract<
+export type ExtractedPropertyValue<T extends PropertyValueType> = Extract<
   PropertyValue,
-  { type: TType }
+  { type: T }
 >;
 
-export type DatabaseItem = PostResult & {
+export type ResultItem = PostResult & {
   properties: {
     Name: ExtractedPropertyValue<'title'>;
     Tags: ExtractedPropertyValue<'multi_select'>;

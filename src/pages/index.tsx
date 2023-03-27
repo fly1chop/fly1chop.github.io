@@ -3,7 +3,7 @@ import styles from '@/components/Home/home.module.css';
 import TagList from '@/components/Home/tag-list';
 import { Client } from '@notionhq/client';
 import { InferGetStaticPropsType } from 'next';
-import { DatabaseItem } from '@/types/post';
+import { ResultItem } from '@/types/post';
 
 const HomePage = ({
   posts
@@ -27,7 +27,7 @@ export async function getStaticProps() {
     database_id: databaseId
   });
 
-  const formatResponse = (post: DatabaseItem) => {
+  const formatResponse = (post: ResultItem) => {
     return {
       id: post.id,
       date: post.created_time,
@@ -37,7 +37,7 @@ export async function getStaticProps() {
   };
 
   const posts = response.results.map(result =>
-    formatResponse(result as DatabaseItem)
+    formatResponse(result as ResultItem)
   );
 
   return {
