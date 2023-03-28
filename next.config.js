@@ -5,7 +5,8 @@ const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
-  }
+  },
+  basePath: '/fly1chop.github.io'
 };
 
 module.exports = nextConfig;
