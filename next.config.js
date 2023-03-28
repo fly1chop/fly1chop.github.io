@@ -6,7 +6,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
-  basePath: '/fly1chop.github.io'
+  images: {
+    unoptimized: true
+  }
 };
 
 module.exports = nextConfig;
