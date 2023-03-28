@@ -1,7 +1,4 @@
-import {
-  QueryDatabaseResponse,
-  PageObjectResponse
-} from '@notionhq/client/build/src/api-endpoints';
+import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export interface Tag {
   id: string;
