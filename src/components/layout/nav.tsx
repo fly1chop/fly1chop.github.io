@@ -38,7 +38,7 @@ const Nav = () => {
             <ToolTip title="LinkedIn" position="left">
               <a href="https://www.linkedin.com/in/janejiwonro/">
                 <Image
-                  src="/linkedIn.svg"
+                  src="/linkedin.svg"
                   alt="LinkedIn"
                   width={25}
                   height={24.39}
