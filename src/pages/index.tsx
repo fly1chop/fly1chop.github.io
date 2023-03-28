@@ -1,6 +1,4 @@
-import PostGrid from '@/components/Home/post-grid';
-import styles from '@/components/Home/home.module.css';
-import TagList from '@/components/Home/tag-list';
+import { styles, PostGrid, TagList } from '@/components/Home';
 import { Client } from '@notionhq/client';
 import { InferGetStaticPropsType } from 'next';
 import { ResultItem } from '@/types/post';
