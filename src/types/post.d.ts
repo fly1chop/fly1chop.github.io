@@ -13,6 +13,11 @@ export interface PostResponse {
   slug: string;
 }
 
+export interface PostDetailResponse {
+  markdown: string;
+  metadata: PostResponse;
+}
+
 export type PostResult = Extract<
   QueryDatabaseResponse['results'][number],
   { properties: Record<string, unknown> }

@@ -58,12 +58,12 @@ export const getSingleBlogPostBySlug = async (slug: string) => {
 
   const page = response.results[0];
 
-  // const metadata = getAllPostsMetaData(page as ResultItem);
+  const metadata = getAllPostsMetaData(page as ResultItem);
   const mdblocks = await n2m.pageToMarkdown(slug);
   const mdString = n2m.toMarkdownString(mdblocks);
 
   return {
-    // metadata,
+    metadata,
     markdown: mdString
   };
 };
