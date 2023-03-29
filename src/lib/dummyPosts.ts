@@ -26,3 +26,5 @@ export const dummyPosts = [
     postId: '0004'
   }
 ];
+
+export const dummyPostDetail = [];
