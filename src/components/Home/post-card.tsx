@@ -1,7 +1,7 @@
 import { PostResponse } from '@/types/post';
 import Link from 'next/link';
 
-const PostCard = ({ tags, title, date, id }: PostResponse) => {
+const PostCard = ({ tags, title, date, slug }: PostResponse) => {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -10,7 +10,7 @@ const PostCard = ({ tags, title, date, id }: PostResponse) => {
 
   return (
     <li>
-      <Link href={`/post/${id}`}>
+      <Link href={`/post/${slug}`}>
         <ul>
           {tags.map(tag => (
             <li key={tag.id}>{tag.name}</li>

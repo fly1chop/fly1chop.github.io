@@ -6,7 +6,7 @@ const PostGrid = ({ posts }: { posts: PostResponse[] }) => {
   return (
     <ul className={styles.postGrid}>
       {posts.map(post => (
-        <PostCard {...post} key={post.id} />
+        <PostCard {...post} key={post.slug} />
       ))}
     </ul>
   );
