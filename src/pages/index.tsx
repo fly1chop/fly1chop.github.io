@@ -1,6 +1,6 @@
 import { styles, PostGrid, TagList } from '@/components/Home';
 import { InferGetStaticPropsType } from 'next';
-import { getAllPosts } from '@/utils/notion';
+import { getAllPosts } from '@/lib/notion';
 
 const HomePage = ({
   posts

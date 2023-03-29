@@ -13,13 +13,15 @@ interface Props {
 }
 
 const PostDetailPage = ({ post }: Props) => {
-  console.log(post);
+  const { metadata, markdown } = post;
   return (
     <section>
-      {/* <h2>{post.metadata.title}</h2>
-      <span>{post.metadata.date}</span>
-      <p>{post.metadata.tags.join(', ')}</p> */}
-      <ReactMarkdown>{post.markdown}</ReactMarkdown>
+      <h2>{metadata.title}</h2>
+      <p>{metadata.date}</p>
+      {metadata.tags.map(tag => (
+        <span key={tag.id}>{tag.name}</span>
+      ))}
+      <ReactMarkdown>{markdown}</ReactMarkdown>
     </section>
   );
 };
@@ -30,7 +32,6 @@ export const getStaticProps: GetStaticProps = async context => {
   const { slug } = context.params! as Params;
   const post = await getSingleBlogPostBySlug(slug);
 
-  console.log(post);
   return {
     props: {
       post

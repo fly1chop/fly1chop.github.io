@@ -12,8 +12,6 @@ export const getAllPosts = async () => {
     database_id: databaseId
   });
 
-  console.log(response);
-
   const posts = response.results.map(result =>
     getAllPostsMetaData(result as ResultItem)
   );
@@ -21,20 +19,20 @@ export const getAllPosts = async () => {
   return posts;
 };
 
-// const getAllPostsMetaData = (post: ResultItem) => {
-//   return {
-//     id: post.id,
-//     date: post.created_time,
-//     title: post.properties.Name.title[0].plain_text,
-//     tags: post.properties.Tags.multi_select
-//   };
-// };
-
 const getAllPostsMetaData = (post: ResultItem) => {
+  const formattedDate = new Date(post.created_time).toLocaleDateString(
+    'en-US',
+    {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }
+  );
+
   return {
     title: post.properties.Name.title[0].plain_text,
     tags: post.properties.Tags.multi_select,
-    date: post.created_time,
+    date: formattedDate,
     slug: post.properties.Slug.formula.string
   };
 };
@@ -53,8 +51,6 @@ export const getSingleBlogPostBySlug = async (slug: string) => {
       }
     }
   });
-
-  console.log(response);
 
   const page = response.results[0];
 
