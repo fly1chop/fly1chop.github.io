@@ -48,7 +48,7 @@ const PostDetailPage = ({ post }: Props) => {
             return !inline && match ? (
               <CodeBlock codestring={codestring} language={match[1]} />
             ) : (
-              <code className={className} {...props}>
+              <code className="inline" {...props}>
                 {children}
               </code>
             );
