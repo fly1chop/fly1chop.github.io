@@ -1,12 +1,12 @@
 import { PostResponse } from '@/types/post';
 import PostCard from './post-card';
-import styles from './post-grid.module.css';
+import styles from './home.module.css';
 
 const PostGrid = ({ posts }: { posts: PostResponse[] }) => {
   return (
-    <ul className={styles.grid}>
+    <ul className={styles.postGrid}>
       {posts.map(post => (
-        <PostCard {...post} key={post.id} />
+        <PostCard {...post} key={post.slug} />
       ))}
     </ul>
   );

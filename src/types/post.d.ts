@@ -7,10 +7,11 @@ export interface Tag {
 }
 
 export interface PostResponse {
-  id: string;
   title: string;
   tags: Tag[];
   date: string;
+  slug: string;
+  id: string;
 }
 
 export type PostResult = Extract<
@@ -31,5 +32,10 @@ export type ResultItem = PostResult & {
   properties: {
     Name: ExtractedPropertyValue<'title'>;
     Tags: ExtractedPropertyValue<'multi_select'>;
+    Slug: {
+      formula: {
+        string: string;
+      };
+    };
   };
 };

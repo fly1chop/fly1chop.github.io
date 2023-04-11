@@ -2,3 +2,17 @@
   display: flex;
   gap: 4rem;
 }
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 2.5rem;
+  align-content: center;
+  flex: auto;
+}
+
+.tagList {
+  display: flex;
+  justify-content: flex-start;
+  width: calc(33.3% + 8rem);
+}

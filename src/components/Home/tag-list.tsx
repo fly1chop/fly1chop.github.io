@@ -1,5 +1,5 @@
 import Tag from '../base/Tag';
-import styles from './tag-list.module.css';
+import styles from './home.module.css';
 
 const tags = ['Next', 'React', 'JS', 'TS', 'HTML'];
 
