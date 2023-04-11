@@ -1,81 +1,68 @@
-import { getAllPosts, getSingleBlogPostBySlug } from '@/lib/notion';
-import { PostDetailResponse } from '@/types/post';
-import { Client } from '@notionhq/client';
+import { styles, TableOfContent, NotionContent } from '@/components/Posts';
+import { getAllPosts, getSinglePostBySlug } from '@/lib/notion';
+import { PostResponse } from '@/types/post';
 import { GetStaticProps } from 'next';
-import { NotionToMarkdown } from 'notion-to-md';
+import { ExtendedRecordMap, PageBlock } from 'notion-types';
+import { getPageTableOfContents } from 'notion-utils';
 import { ParsedUrlQuery } from 'querystring';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
-
 interface Props {
-  post: PostDetailResponse;
-  // mdblocks: unknown;
+  recordMap: ExtendedRecordMap;
+  metadata: PostResponse;
 }
 
-interface CodeBlockProps {
-  language: string;
-  codestring: string;
-}
+const PostDetailPage = ({ recordMap, metadata }: Props) => {
+  if (!recordMap) {
+    return null;
+  }
 
-const CodeBlock = ({ language, codestring }: CodeBlockProps) => {
+  console.log(metadata);
+  const pageBlock = recordMap.block[metadata.id];
+  const toc = getPageTableOfContents(pageBlock.value as PageBlock, recordMap);
+  console.log(toc);
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    <SyntaxHighlighter language={language} style={oneDark} PreTag="div">
-      {codestring}
-    </SyntaxHighlighter>
-  );
-};
-const PostDetailPage = ({ post }: Props) => {
-  // console.log(mdblocks);
-  const { metadata, markdown } = post;
-  return (
-    <section>
-      <h2>{metadata.title}</h2>
-      <p>{metadata.date}</p>
-      {metadata.tags.map(tag => (
-        <span key={tag.id}>{tag.name}</span>
-      ))}
-      <ReactMarkdown
-        components={{
-          code({ inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || '');
-            const codestring = String(children).replace(/\n$/, '');
-            return !inline && match ? (
-              <CodeBlock codestring={codestring} language={match[1]} />
-            ) : (
-              <code className="inline" {...props}>
-                {children}
-              </code>
-            );
-          }
-        }}
-      >
-        {markdown}
-      </ReactMarkdown>
-    </section>
+    <div className={styles.post}>
+      <NotionContent recordMap={recordMap} title={metadata.title} />
+      <aside>
+        <TableOfContent toc={toc} />
+      </aside>
+    </div>
   );
 };
 
 export default PostDetailPage;
 
+// const notionClient = new Client({
+//   auth: process.env.NOTION_ACCESS_TOKEN
+// });
+// const databaseId = process.env.NOTION_DATABASE_ID as string;
+
 export const getStaticProps: GetStaticProps = async context => {
   const { slug } = context.params as Params;
-  const post = await getSingleBlogPostBySlug(slug);
-  const notion = new Client({
-    auth: process.env.NOTION_ACCESS_TOKEN
-  });
-  const n2m = new NotionToMarkdown({ notionClient: notion });
-  const mdblocks = await n2m.pageToMarkdown(slug);
+  const { recordMap, metadata } = await getSinglePostBySlug(slug);
+  // const response = await notionClient.databases.query({
+  //   database_id: databaseId,
+  //   filter: {
+  //     property: 'Slug',
+  //     formula: {
+  //       string: {
+  //         equals: slug
+  //       }
+  //     }
+  //   }
+  // });
+
+  // const page = response.results[0];
 
   return {
     props: {
-      post
-    }
+      recordMap,
+      metadata
+    },
+    revalidate: 60
   };
 };
 
