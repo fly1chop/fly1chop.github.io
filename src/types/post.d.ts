@@ -11,11 +11,7 @@ export interface PostResponse {
   tags: Tag[];
   date: string;
   slug: string;
-}
-
-export interface PostDetailResponse {
-  markdown: string;
-  metadata: PostResponse;
+  id: string;
 }
 
 export type PostResult = Extract<
