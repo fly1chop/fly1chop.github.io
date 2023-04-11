@@ -1,14 +1,15 @@
 import { ResultItem } from '@/types/post';
 import { Client } from '@notionhq/client';
-import { NotionToMarkdown } from 'notion-to-md';
+import { NotionAPI } from 'notion-client';
 
-const notion = new Client({
+const notionClient = new Client({
   auth: process.env.NOTION_ACCESS_TOKEN
 });
 const databaseId = process.env.NOTION_DATABASE_ID as string;
+const notionReact = new NotionAPI();
 
 export const getAllPosts = async () => {
-  const response = await notion.databases.query({
+  const response = await notionClient.databases.query({
     database_id: databaseId
   });
 
@@ -33,14 +34,13 @@ const getAllPostsMetaData = (post: ResultItem) => {
     title: post.properties.Name.title[0].plain_text,
     tags: post.properties.Tags.multi_select,
     date: formattedDate,
-    slug: post.properties.Slug.formula.string
+    slug: post.properties.Slug.formula.string,
+    id: post.id
   };
 };
 
-const n2m = new NotionToMarkdown({ notionClient: notion });
-
-export const getSingleBlogPostBySlug = async (slug: string) => {
-  const response = await notion.databases.query({
+export const getSinglePostBySlug = async (slug: string) => {
+  const response = await notionClient.databases.query({
     database_id: databaseId,
     filter: {
       property: 'Slug',
@@ -53,13 +53,8 @@ export const getSingleBlogPostBySlug = async (slug: string) => {
   });
 
   const page = response.results[0];
-
   const metadata = getAllPostsMetaData(page as ResultItem);
-  const mdblocks = await n2m.pageToMarkdown(slug);
-  const mdString = n2m.toMarkdownString(mdblocks);
+  const recordMap = await notionReact.getPage(slug);
 
-  return {
-    metadata,
-    markdown: mdString
-  };
+  return { metadata, recordMap };
 };
