@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   gap: 4rem;
+  padding: 0 2rem;
 
   > main {
     min-width: 0;
@@ -13,6 +14,9 @@
   justify-content: flex-end;
   width: 25%;
   padding-top: 10rem;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
 }
 
 .navList {
