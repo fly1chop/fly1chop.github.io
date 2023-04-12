@@ -7,9 +7,14 @@ interface Props {
 }
 
 const Tag = ({ name, fill = true, size = 'default' }: Props) => {
-  const tagClass = classNames(styles.tag, styles[size], {
-    [styles.fill]: fill
-  });
+  const tagClass = classNames(
+    styles.tag,
+    styles[size],
+    styles[name.toLowerCase()],
+    {
+      [styles.fill]: fill
+    }
+  );
 
   return <div className={tagClass}>{name}</div>;
 };
