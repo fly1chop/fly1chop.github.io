@@ -18,14 +18,17 @@ const PostDetailPage = ({ recordMap, metadata }: Props) => {
     return null;
   }
 
-  console.log(metadata);
   const pageBlock = recordMap.block[metadata.id];
   const toc = getPageTableOfContents(pageBlock.value as PageBlock, recordMap);
-  console.log(toc);
 
   return (
     <div className={styles.post}>
-      <NotionContent recordMap={recordMap} title={metadata.title} />
+      <NotionContent
+        recordMap={recordMap}
+        title={metadata.title}
+        tags={metadata.tags}
+        date={metadata.date}
+      />
       <aside>
         <TableOfContent toc={toc} />
       </aside>

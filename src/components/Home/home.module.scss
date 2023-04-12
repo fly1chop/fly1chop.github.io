@@ -1,0 +1,67 @@
+.home {
+  display: flex;
+  gap: 4rem;
+  position: relative;
+
+  > p {
+    position: absolute;
+    top: 7.5rem;
+    color: var(--text-sub);
+  }
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 2.5rem;
+  align-content: center;
+  flex: auto;
+  padding: 10rem 0;
+}
+
+.postCard {
+  background-color: var(--background-page-white);
+  min-height: 18rem;
+  box-sizing: border-box;
+  padding: 2rem;
+  border: 1px solid var(--border-main);
+  border-radius: 1rem;
+  position: relative;
+
+  ul > li {
+    margin-right: 0.5rem;
+    display: inline-block;
+  }
+
+  h3 {
+    display: inline-block;
+    margin: 1rem 0;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
+
+    + p {
+      position: absolute;
+      font-size: 1.1rem;
+      bottom: 2rem;
+      color: var(--text-sub);
+    }
+  }
+}
+
+.tagList {
+  display: flex;
+  justify-content: flex-start;
+  width: calc(33.3% - 8rem);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  padding-top: 10rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}

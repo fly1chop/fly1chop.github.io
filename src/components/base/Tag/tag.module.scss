@@ -1,9 +1,27 @@
 .tag {
-  color: red;
+  color: var(--text-sub);
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.4rem 0.8rem 0.4rem 1.7rem;
+  border-radius: 3rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.5rem;
+    background-color: var(--text-sub);
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 100%;
+  }
 }
 
 .default {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .large {
@@ -11,5 +29,60 @@
 }
 
 .fill {
-  background-color: lightblue;
+  background-color: var(--border-main);
+}
+
+.next {
+  &::before {
+    background-color: var(--purple);
+  }
+
+  &.fill {
+    background-color: var(--purple-bg);
+  }
+}
+.js {
+  &::before {
+    background-color: var(--yellow);
+  }
+
+  &.fill {
+    background-color: var(--yellow-bg);
+  }
+}
+.ts {
+  &::before {
+    background-color: var(--blue);
+  }
+
+  &.fill {
+    background-color: var(--blue-bg);
+  }
+}
+.react {
+  &::before {
+    background-color: var(--green);
+  }
+
+  &.fill {
+    background-color: var(--green-bg);
+  }
+}
+.html {
+  &::before {
+    background-color: var(--red);
+  }
+
+  &.fill {
+    background-color: var(--red-bg);
+  }
+}
+.css {
+  &::before {
+    background-color: var(--orange);
+  }
+
+  &.fill {
+    background-color: var(--orange-bg);
+  }
 }

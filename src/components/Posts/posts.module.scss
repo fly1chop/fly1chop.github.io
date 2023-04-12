@@ -5,31 +5,50 @@
   > section {
     box-sizing: border-box;
     min-width: 0;
-    padding: 10rem 4rem 0 4rem;
+    padding: 10rem 4rem;
     background-color: var(--background-page-white);
     border-left: 1px solid var(--border-main);
     border-right: 1px solid var(--border-main);
 
-    li {
+    > main li {
       list-style-type: disc;
     }
   }
 
   > aside {
     padding-top: 10rem;
-    width: calc(33.33% - 4rem);
+    width: calc(33.33% - 6rem);
     position: sticky;
     top: 0;
     align-self: flex-start;
-
-    li {
-      margin-bottom: 2rem;
-    }
   }
+}
+
+.tags > li {
+  margin-right: 0.5rem;
+  display: inline-block;
 }
 
 .title {
   display: block;
   font-size: 3rem;
   margin-bottom: 3rem;
+}
+
+.date {
+  font-size: 1.1rem;
+}
+
+.toc {
+  li {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-light);
+  }
+
+  li:hover,
+  li:focus,
+  li.active {
+    color: var(--text-main);
+  }
 }

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { TableOfContentsEntry } from 'notion-utils';
 import { useState } from 'react';
 import styles from './posts.module.scss';
@@ -7,21 +8,33 @@ interface Props {
 }
 
 const TableOfContent = ({ toc }: Props) => {
-  const [isActive, setIsActive] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   const formattedId = (id: string) => {
     return id.replaceAll('-', '');
+  };
+
+  const handleNavigateToSection = (idx: number) => {
+    setCurrent(idx);
   };
 
   return (
     <nav className={styles.toc}>
       <ul>
         {toc &&
-          toc.map(x => (
-            <li key={x.id}>
-              <a href={`#${formattedId(x.id)}`}>{x.text}</a>
-            </li>
-          ))}
+          toc.map((x, idx) => {
+            const isActive = classNames({ [styles.active]: current === idx });
+            return (
+              <li key={x.id} className={isActive}>
+                <a
+                  href={`#${formattedId(x.id)}`}
+                  onClick={() => handleNavigateToSection(idx)}
+                >
+                  {x.text}
+                </a>
+              </li>
+            );
+          })}
       </ul>
     </nav>
   );
