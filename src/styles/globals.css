@@ -33,6 +33,8 @@
 
   --tooltip-margin: 1rem;
   --tooltip-arrow-size: 0.6rem;
+
+  --display-max-width: 1400px;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -79,6 +81,12 @@ li {
 
 button {
   font: inherit;
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
   cursor: pointer;
 }
 
