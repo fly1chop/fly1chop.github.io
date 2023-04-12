@@ -1,18 +1,21 @@
 .layout {
   display: flex;
   min-height: 100vh;
+  max-width: var(--display-max-width);
   gap: 4rem;
   padding: 0 2rem;
+  margin: 0 auto;
 
   > main {
     min-width: 0;
+    flex: auto;
   }
 }
 
 .header {
   display: flex;
   justify-content: flex-end;
-  width: 25%;
+  width: calc(25% - 6rem);
   padding-top: 10rem;
   position: sticky;
   top: 0;
@@ -32,4 +35,5 @@
   font-size: 1rem;
   font-style: italic;
   text-align: center;
+  border-top: 1px solid var(--border-main);
 }
