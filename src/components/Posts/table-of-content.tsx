@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import useHeadingsDOM from '@/hooks/useHeadingsDOM';
 import { TableOfContentsEntry } from 'notion-utils';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import styles from './posts.module.scss';
 
 interface Props {
@@ -8,14 +8,23 @@ interface Props {
 }
 
 const TableOfContent = ({ toc }: Props) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState<number | null>(null);
+  const { headings } = useHeadingsDOM();
 
   const formattedId = (id: string) => {
     return id.replaceAll('-', '');
   };
 
-  const handleNavigateToSection = (idx: number) => {
+  const handleNavigateToSection = (
+    e: MouseEvent<HTMLAnchorElement>,
+    idx: number
+  ) => {
+    e.preventDefault();
     setCurrent(idx);
+    headings[idx].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   };
 
   return (
@@ -23,12 +32,12 @@ const TableOfContent = ({ toc }: Props) => {
       <ul>
         {toc &&
           toc.map((x, idx) => {
-            const isActive = classNames({ [styles.active]: current === idx });
+            const activeClass = current === idx ? styles.active : '';
             return (
-              <li key={x.id} className={isActive}>
+              <li key={x.id} className={activeClass}>
                 <a
                   href={`#${formattedId(x.id)}`}
-                  onClick={() => handleNavigateToSection(idx)}
+                  onClick={e => handleNavigateToSection(e, idx)}
                 >
                   {x.text}
                 </a>
