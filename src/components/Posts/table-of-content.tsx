@@ -1,6 +1,6 @@
 import useHeadingsDOM from '@/hooks/useHeadingsDOM';
 import { TableOfContentsEntry } from 'notion-utils';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import styles from './posts.module.scss';
 
 interface Props {
@@ -8,10 +8,10 @@ interface Props {
 }
 
 const TableOfContent = ({ toc }: Props) => {
-  const [current, setCurrent] = useState<number | null>(null);
+  const [current, setCurrent] = useState<string | null>(null);
   const { headings } = useHeadingsDOM();
 
-  const formattedId = (id: string) => {
+  const formatId = (id: string) => {
     return id.replaceAll('-', '');
   };
 
@@ -20,23 +20,43 @@ const TableOfContent = ({ toc }: Props) => {
     idx: number
   ) => {
     e.preventDefault();
-    setCurrent(idx);
-    headings[idx].scrollIntoView({
+    const heading = headings[idx];
+    setCurrent(heading.getAttribute('data-id'));
+    heading.scrollIntoView({
       behavior: 'smooth',
       block: 'start'
     });
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('data-id');
+          if (entry.isIntersecting) {
+            setCurrent(id);
+          }
+        });
+      },
+      { rootMargin: '0% 0% -85% 0%' }
+    );
+
+    headings.forEach(heading => {
+      observer.observe(heading);
+    });
+  }, [headings]);
 
   return (
     <nav className={styles.toc}>
       <ul>
         {toc &&
           toc.map((x, idx) => {
-            const activeClass = current === idx ? styles.active : '';
+            const formattedId = formatId(x.id);
+            const activeClass = current === formattedId ? styles.active : '';
             return (
               <li key={x.id} className={activeClass}>
                 <a
-                  href={`#${formattedId(x.id)}`}
+                  href={`#${formattedId}`}
                   onClick={e => handleNavigateToSection(e, idx)}
                 >
                   {x.text}
