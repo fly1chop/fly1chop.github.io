@@ -1,16 +1,19 @@
 import { styles, PostGrid, TagList } from '@/components/Home';
 import { InferGetStaticPropsType } from 'next';
 import { getAllPosts, getDatabaseTags } from '@/lib/notion';
+import FiltersProvider from '@/context/filters';
 
 const HomePage = ({
   posts,
   tags
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div className={styles.home}>
-      <PostGrid posts={posts} />
-      <TagList tags={tags} />
-    </div>
+    <FiltersProvider>
+      <div className={styles.home}>
+        <PostGrid posts={posts} />
+        <TagList tags={tags} />
+      </div>
+    </FiltersProvider>
   );
 };
 
