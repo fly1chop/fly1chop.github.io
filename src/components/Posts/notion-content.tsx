@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './posts.module.scss';
-import { Tag as TTag } from '@/types/post';
+import { TagResponse } from '@/types/tag';
 import Tag from '../base/Tag';
 
 const Code = dynamic(
@@ -21,7 +21,7 @@ const Equation = dynamic(() =>
 interface Props {
   recordMap: ExtendedRecordMap;
   title: string;
-  tags: TTag[];
+  tags: TagResponse[];
   date: string;
 }
 

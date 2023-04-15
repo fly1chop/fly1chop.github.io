@@ -1,28 +1,28 @@
-import { useState } from 'react';
+import { useFilters } from '@/context/filters';
+import { TagResponse } from '@/types/tag';
 import Tag from '../base/Tag';
 import styles from './home.module.scss';
 
-const tags = ['Next', 'React', 'JS', 'TS', 'HTML'];
-
-const TagList = () => {
-  const [filters, setFilters] = useState<string[]>([]);
-
-  const handleSelect = (tag: string) => {
-    if (filters.includes(tag)) {
-      setFilters(filters.filter(x => x !== tag));
-    } else {
-      setFilters([...filters, tag]);
-    }
-  };
+const TagList = ({ tags }: { tags: TagResponse[] }) => {
+  const { filters, setFilters, resetFilters } = useFilters();
 
   return (
     <div className={styles.tagList}>
       <ul>
         {tags.map(tag => (
-          <button key={tag} onClick={() => handleSelect(tag)}>
-            <Tag name={tag} fill={filters.includes(tag)} size="large" />
+          <button key={tag.id} onClick={() => setFilters(tag.name)}>
+            <Tag
+              name={tag.name}
+              fill={filters.includes(tag.name)}
+              size="large"
+            />
           </button>
         ))}
+        {filters.length > 0 && (
+          <button className={styles.resetFiltersBtn} onClick={resetFilters}>
+            unselect all
+          </button>
+        )}
       </ul>
     </div>
   );
