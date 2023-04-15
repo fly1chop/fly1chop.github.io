@@ -1,10 +1,9 @@
+import { TagResponse } from '@/types/tag';
 import { useState } from 'react';
 import Tag from '../base/Tag';
 import styles from './home.module.scss';
 
-const tags = ['Next', 'React', 'JS', 'TS', 'HTML'];
-
-const TagList = () => {
+const TagList = ({ tags }: { tags: TagResponse[] }) => {
   const [filters, setFilters] = useState<string[]>([]);
 
   const handleSelect = (tag: string) => {
@@ -19,8 +18,12 @@ const TagList = () => {
     <div className={styles.tagList}>
       <ul>
         {tags.map(tag => (
-          <button key={tag} onClick={() => handleSelect(tag)}>
-            <Tag name={tag} fill={filters.includes(tag)} size="large" />
+          <button key={tag.id} onClick={() => handleSelect(tag.name)}>
+            <Tag
+              name={tag.name}
+              fill={filters.includes(tag.name)}
+              size="large"
+            />
           </button>
         ))}
       </ul>
