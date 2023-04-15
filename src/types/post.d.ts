@@ -1,14 +1,9 @@
 import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
-
-export interface Tag {
-  id: string;
-  name: string;
-  color: string;
-}
+import { TagResponse } from './tag';
 
 export interface PostResponse {
   title: string;
-  tags: Tag[];
+  tags: TagResponse[];
   date: string;
   slug: string;
   id: string;
@@ -19,19 +14,18 @@ export type PostResult = Extract<
   { properties: Record<string, unknown> }
 >;
 
+export type ExtractedValue<T, K, U> = T extends K
+  ? Extract<U, { type: T }>
+  : never;
+
 type PropertyValueMap = PostResult['properties'];
 type PropertyValue = PropertyValueMap[string];
 type PropertyValueType = PropertyValue['type'];
 
-export type ExtractedPropertyValue<T extends PropertyValueType> = Extract<
-  PropertyValue,
-  { type: T }
->;
-
 export type ResultItem = PostResult & {
   properties: {
-    Name: ExtractedPropertyValue<'title'>;
-    Tags: ExtractedPropertyValue<'multi_select'>;
+    Name: ExtractedValue<'title', PropertyValueType, PropertyValue>;
+    Tags: ExtractedValue<'multi_select', PropertyValueType, PropertyValue>;
     Slug: {
       formula: {
         string: string;
