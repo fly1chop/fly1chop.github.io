@@ -1,4 +1,5 @@
 import { ResultItem } from '@/types/post';
+import { TagResult } from '@/types/tag';
 import { Client } from '@notionhq/client';
 import { NotionAPI } from 'notion-client';
 
@@ -7,6 +8,16 @@ const notionClient = new Client({
 });
 const databaseId = process.env.NOTION_DATABASE_ID as string;
 const notionReact = new NotionAPI();
+
+export const getDatabaseTags = async () => {
+  const response = (await notionClient.databases.retrieve({
+    database_id: databaseId
+  })) as TagResult;
+
+  const tags = response.properties.Tags.multi_select.options;
+
+  return tags;
+};
 
 export const getAllPosts = async () => {
   const response = await notionClient.databases.query({
