@@ -27,6 +27,7 @@ export async function getStaticProps() {
     props: {
       posts,
       tags
-    }
+    },
+    revalidate: 60,
   };
 }
