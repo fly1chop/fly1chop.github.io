@@ -4,7 +4,7 @@ import Tag from '../base/Tag';
 import styles from './home.module.scss';
 
 const TagList = ({ tags }: { tags: TagResponse[] }) => {
-  const { filters, setFilters, resetFilters } = useFilters();
+  const { filters, setFilters } = useFilters();
 
   return (
     <div className={styles.tagList}>
@@ -19,7 +19,10 @@ const TagList = ({ tags }: { tags: TagResponse[] }) => {
           </button>
         ))}
         {filters.length > 0 && (
-          <button className={styles.resetFiltersBtn} onClick={resetFilters}>
+          <button
+            className={styles.resetFiltersBtn}
+            onClick={() => setFilters('')}
+          >
             unselect all
           </button>
         )}
