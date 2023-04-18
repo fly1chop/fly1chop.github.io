@@ -49,21 +49,20 @@ const TableOfContent = ({ toc }: Props) => {
   return (
     <nav className={styles.toc}>
       <ul>
-        {toc &&
-          toc.map((x, idx) => {
-            const formattedId = formatId(x.id);
-            const activeClass = current === formattedId ? styles.active : '';
-            return (
-              <li key={x.id} className={activeClass}>
-                <a
-                  href={`#${formattedId}`}
-                  onClick={e => handleNavigateToSection(e, idx)}
-                >
-                  {x.text}
-                </a>
-              </li>
-            );
-          })}
+        {toc.map((x, idx) => {
+          const formattedId = formatId(x.id);
+          const activeClass = current === formattedId ? styles.active : '';
+          return (
+            <li key={x.id} className={activeClass}>
+              <a
+                href={`#${formattedId}`}
+                onClick={e => handleNavigateToSection(e, idx)}
+              >
+                {x.text}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
