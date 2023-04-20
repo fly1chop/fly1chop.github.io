@@ -86,3 +86,12 @@
     background-color: var(--orange-bg);
   }
 }
+.algorithm {
+  &::before {
+    background-color: var(--brown);
+  }
+
+  &.fill {
+    background-color: var(--brown-bg);
+  }
+}

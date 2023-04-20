@@ -3,7 +3,6 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 type TFiltersContext = {
   filters: string[];
   setFilters: (tag: string) => void;
-  resetFilters: () => void;
 };
 
 export const FiltersContext = createContext<TFiltersContext | null>(null);
@@ -13,6 +12,11 @@ const FiltersProvider = ({ children }: { children: ReactNode }) => {
   const [filters, setNextFilters] = useState<string[]>([]);
 
   const setFilters = (tag: string) => {
+    if (!tag) {
+      setNextFilters([]);
+      return;
+    }
+
     if (filters.includes(tag)) {
       setNextFilters(filters.filter(x => x !== tag));
     } else {
@@ -20,11 +24,8 @@ const FiltersProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const resetFilters = () => {
-    setNextFilters([]);
-  };
   return (
-    <FiltersContext.Provider value={{ filters, setFilters, resetFilters }}>
+    <FiltersContext.Provider value={{ filters, setFilters }}>
       {children}
     </FiltersContext.Provider>
   );
