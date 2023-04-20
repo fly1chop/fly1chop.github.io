@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './posts.module.scss';
 import { TagResponse } from '@/types/tag';
 import Tag from '../base/Tag';
+import Giscus from '@giscus/react';
 
 const Code = dynamic(
   () => import('react-notion-x/build/third-party/code').then(m => m.Code),
@@ -46,6 +47,24 @@ const NotionContent = ({ recordMap, title, tags, date }: Props) => {
           nextLink: Link
         }}
       />
+      <div>
+        <Giscus
+          id="comments"
+          term="blog"
+          repo="fly1chop/fly1chop.github.io"
+          repoId="R_kgDOJM59ng"
+          category="General"
+          categoryId="DIC_kwDOJM59ns4CV1uI"
+          mapping="pathname"
+          strict="0"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="light"
+          lang="en"
+          loading="lazy"
+        />
+      </div>
     </section>
   );
 };
