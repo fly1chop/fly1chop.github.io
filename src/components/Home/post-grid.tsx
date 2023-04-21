@@ -11,6 +11,14 @@ const PostGrid = ({ posts }: { posts: PostResponse[] }) => {
       ? posts.filter(post => post.tags.find(tag => filters.includes(tag.name)))
       : posts;
 
+  if (filteredPosts.length === 0) {
+    return (
+      <div className={styles.postEmpty}>
+        <p>Sorry :&#40;</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <p className={styles.countPosts}>{filteredPosts.length} posts</p>

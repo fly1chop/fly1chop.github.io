@@ -12,11 +12,23 @@
 
 .postGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   gap: 2.5rem;
   align-content: center;
   flex: auto;
   padding: 10rem 0;
+}
+
+.postEmpty {
+  display: block;
+  flex: auto;
+  padding-top: 10rem;
+
+  p {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 2rem;
+  }
 }
 
 .postCard {
