@@ -1,3 +1,4 @@
+import Header from '@/components/layout/header';
 import { styles, TableOfContent, NotionContent } from '@/components/Posts';
 import { getAllPosts, getSinglePostBySlug } from '@/lib/notion';
 import { PostResponse } from '@/types/post';
@@ -22,17 +23,20 @@ const PostDetailPage = ({ recordMap, metadata }: Props) => {
   const toc = getPageTableOfContents(pageBlock.value as PageBlock, recordMap);
 
   return (
-    <div className={styles.post}>
-      <NotionContent
-        recordMap={recordMap}
-        title={metadata.title}
-        tags={metadata.tags}
-        date={metadata.date}
-      />
-      <aside>
-        <TableOfContent toc={toc} />
-      </aside>
-    </div>
+    <>
+      <Header title={metadata.title} />
+      <div className={styles.post}>
+        <NotionContent
+          recordMap={recordMap}
+          title={metadata.title}
+          tags={metadata.tags}
+          date={metadata.date}
+        />
+        <aside>
+          <TableOfContent toc={toc} />
+        </aside>
+      </div>
+    </>
   );
 };
 
