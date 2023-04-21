@@ -5,8 +5,8 @@ import styles from './home.module.scss';
 
 const PostCard = ({ tags, title, date, slug }: PostResponse) => {
   return (
-    <Link href={`/post/${slug}`}>
-      <li className={styles.postCard}>
+    <li className={styles.postCard}>
+      <Link href={`/post/${slug}`}>
         <ul>
           {tags.map(tag => (
             <li key={tag.id}>
@@ -16,8 +16,8 @@ const PostCard = ({ tags, title, date, slug }: PostResponse) => {
         </ul>
         <h3>{title}</h3>
         <p>{date}</p>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 };
 
