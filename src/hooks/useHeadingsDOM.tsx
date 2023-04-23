@@ -7,7 +7,7 @@ const useHeadingsDOM = () => {
     setHeadings(Array.from(document.querySelectorAll('h2, h3, h4')));
   }, []);
 
-  return { headings };
+  return headings;
 };
 
 export default useHeadingsDOM;
