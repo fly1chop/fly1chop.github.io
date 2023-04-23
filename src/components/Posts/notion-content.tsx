@@ -39,6 +39,7 @@ const NotionContent = ({ recordMap, title, tags, date }: Props) => {
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.date}>{date}</p>
       <NotionRenderer
+        bodyClassName={styles.notionCustom}
         recordMap={recordMap}
         fullPage={false}
         components={{
@@ -48,7 +49,7 @@ const NotionContent = ({ recordMap, title, tags, date }: Props) => {
           nextLink: Link
         }}
       />
-      <div>
+      <div className={styles.giscus}>
         <Giscus
           id="comments"
           term="blog"
