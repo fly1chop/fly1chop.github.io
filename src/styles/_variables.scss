@@ -1,0 +1,11 @@
+// BREAKPOINTS
+$mobile: 480px;
+$tablet: 760px;
+$display-min-width: 375px;
+$display-max-width: 1400px;
+
+@mixin respond($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}

@@ -1,7 +1,10 @@
+@import '@/styles/variables.scss';
+
 .layout {
   display: flex;
   min-height: 100vh;
-  max-width: var(--display-max-width);
+  max-width: $display-max-width;
+  min-width: $display-min-width;
   gap: 4rem;
   padding: 0 2rem;
   margin: 0 auto;
@@ -9,6 +12,10 @@
   > main {
     min-width: 0;
     flex: auto;
+  }
+
+  @include respond($tablet) {
+    padding: 0;
   }
 }
 
@@ -20,6 +27,10 @@
   position: sticky;
   top: 0;
   align-self: flex-start;
+
+  @include respond($tablet) {
+    position: absolute;
+  }
 }
 
 .navList {
