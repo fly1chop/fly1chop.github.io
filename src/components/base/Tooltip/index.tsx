@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './tooltip.module.css';
+import styles from './tooltip.module.scss';
 
 interface Props {
   title: string;

@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500&family=Roboto+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
-
 :root {
-  --max-width: 1100px;
   --background-page-white: #fffff9;
   --background-page: #fffef4;
   --background-editor: #eeeeee;
@@ -33,11 +30,6 @@
 
   --brown: #c69a53;
   --brown-bg: #e3d0b2;
-
-  --tooltip-margin: 1rem;
-  --tooltip-arrow-size: 0.6rem;
-
-  --display-max-width: 1400px;
 }
 
 /* @media (prefers-color-scheme: dark) {
