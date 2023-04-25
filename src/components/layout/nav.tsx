@@ -9,7 +9,7 @@ const Nav = () => {
       <nav>
         <ul className={styles.navList}>
           <li>
-            <ToolTip title="홈" position="left">
+            <ToolTip title="Home" position="left">
               <Link href="/">
                 <Image
                   src="/home.svg"
@@ -48,7 +48,7 @@ const Nav = () => {
             </ToolTip>
           </li>
           <li>
-            <ToolTip title="이력서" position="left">
+            <ToolTip title="Resume" position="left">
               <Link href="/resume">
                 <Image
                   src="/resume.svg"
@@ -61,7 +61,7 @@ const Nav = () => {
             </ToolTip>
           </li>
           <li>
-            <ToolTip title="포트폴리오" position="left">
+            <ToolTip title="Portfolio" position="left">
               <Link href="/portfolio">
                 <Image
                   src="/portfolio.svg"

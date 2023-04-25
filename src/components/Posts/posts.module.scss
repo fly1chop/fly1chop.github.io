@@ -33,7 +33,7 @@
 .title {
   display: block;
   font-size: 3rem;
-  margin-bottom: 3rem;
+  margin: 1rem 0 3rem;
 }
 
 .date {
@@ -52,4 +52,15 @@
   li.active {
     color: var(--text-main);
   }
+}
+
+// notion custom style
+.notionCustom {
+  > div:first-child + div {
+    margin-top: 1.1rem;
+  }
+}
+
+.giscus {
+  margin-top: 4rem;
 }
