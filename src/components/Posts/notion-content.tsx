@@ -40,6 +40,7 @@ const NotionContent = ({ recordMap, title, tags, date }: Props) => {
       <p className={styles.date}>{date}</p>
       <NotionRenderer
         recordMap={recordMap}
+        fullPage={false}
         components={{
           Code,
           Equation,
