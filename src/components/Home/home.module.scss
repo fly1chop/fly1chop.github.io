@@ -1,12 +1,23 @@
+@import '@/styles/variables.scss';
+
 .home {
   display: flex;
   gap: 4rem;
   position: relative;
 
+  @include respond($tablet) {
+    flex-direction: column-reverse;
+  }
+
   > p {
     position: absolute;
     top: 7.5rem;
     color: var(--text-sub);
+
+    @include respond($tablet) {
+      top: 6rem;
+      left: 1rem;
+    }
   }
 }
 
@@ -17,6 +28,11 @@
   align-content: center;
   flex: auto;
   padding: 10rem 0;
+
+  @include respond($tablet) {
+    padding: 0 1rem 1rem;
+    gap: 1rem;
+  }
 }
 
 .postEmpty {
@@ -73,11 +89,31 @@
   align-self: flex-start;
   padding-top: 10rem;
 
+  @include respond($tablet) {
+    margin-left: 4.5rem;
+    padding: 1rem;
+    width: calc(100% - 4.5rem);
+    height: 4.5rem;
+    z-index: 100;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
+
+    @include respond($tablet) {
+      position: absolute;
+      flex-direction: row;
+      width: calc(100% - 2rem);
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
   }
 
   .resetFiltersBtn {

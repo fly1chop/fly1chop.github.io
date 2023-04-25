@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .post {
   display: flex;
   gap: 4rem;
@@ -11,6 +13,14 @@
     border-left: 1px solid var(--border-main);
     border-right: 1px solid var(--border-main);
 
+    @include respond($tablet) {
+      padding: 6rem 1rem;
+
+      > main {
+        padding: 0;
+      }
+    }
+
     > main li {
       list-style-type: disc;
     }
@@ -22,6 +32,10 @@
     position: sticky;
     top: 0;
     align-self: flex-start;
+
+    @include respond($tablet) {
+      display: none;
+    }
   }
 }
 
@@ -33,7 +47,11 @@
 .title {
   display: block;
   font-size: 3rem;
-  margin: 1rem 0 3rem;
+  margin: 0.5rem 0 3rem;
+
+  @include respond($tablet) {
+    font-size: 2.5rem;
+  }
 }
 
 .date {

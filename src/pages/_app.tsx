@@ -1,5 +1,5 @@
+import '@/styles/main.scss';
 import Layout from '@/components/layout/layout';
-import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import 'react-notion-x/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';

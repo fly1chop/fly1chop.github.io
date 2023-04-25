@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import styles from './tooltip.module.css';
+import styles from './tooltip.module.scss';
 
-interface Props {
+export interface ToolTipProps {
   title: string;
   position: 'top' | 'left' | 'right' | 'bottom';
 }
@@ -10,7 +10,7 @@ const ToolTip = ({
   children,
   title,
   position
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<ToolTipProps>) => {
   const [isShow, setIsShow] = useState(false);
 
   const show = () => {
