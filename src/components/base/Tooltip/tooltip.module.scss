@@ -10,7 +10,7 @@ $tooltip-arrow-size: 0.6rem;
   left: 50%;
   transform: translateX(-50%);
   color: var(--text-light);
-  background-color: rgba(var(--background-grey), 30%);
+  background-color: var(--background-grey);
   padding: 0.8rem 1.1rem;
   font-size: 1.2rem;
   z-index: 100;
@@ -35,7 +35,7 @@ $tooltip-arrow-size: 0.6rem;
   /* CSS border triangles */
   &::before {
     top: 100%;
-    border-top-color: rgba(var(--background-grey), 30%);
+    border-top-color: var(--background-grey);
   }
 }
 
@@ -50,7 +50,7 @@ $tooltip-arrow-size: 0.6rem;
     left: calc($tooltip-arrow-size * -1);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-right-color: rgba(var(--background-grey), 30%);
+    border-right-color: var(--background-grey);
   }
 }
 
@@ -61,7 +61,7 @@ $tooltip-arrow-size: 0.6rem;
   /* CSS border triangles */
   &::before {
     bottom: 100%;
-    border-bottom-color: rgba(var(--background-grey), 30%);
+    border-bottom-color: var(--background-grey);
   }
 }
 
@@ -78,6 +78,6 @@ $tooltip-arrow-size: 0.6rem;
     right: calc($tooltip-arrow-size * -2);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-left-color: rgba(var(--background-grey), 30%);
+    border-left-color: var(--background-grey);
   }
 }

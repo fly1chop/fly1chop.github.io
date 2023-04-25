@@ -7,7 +7,6 @@
 
   @include respond($tablet) {
     flex-direction: column-reverse;
-    margin-top: 1rem;
   }
 
   > p {
@@ -91,11 +90,11 @@
   padding-top: 10rem;
 
   @include respond($tablet) {
+    margin-left: 4.5rem;
     padding: 1rem;
-    width: 100%;
+    width: calc(100% - 4.5rem);
     height: 4.5rem;
-    background-color: var(--background-page);
-    border-bottom: 1px solid var(--border-main);
+    z-index: 100;
   }
 
   ul {
@@ -107,7 +106,7 @@
     @include respond($tablet) {
       position: absolute;
       flex-direction: row;
-      width: calc(100% - 1rem);
+      width: calc(100% - 2rem);
       overflow: auto;
       &::-webkit-scrollbar {
         display: none;
