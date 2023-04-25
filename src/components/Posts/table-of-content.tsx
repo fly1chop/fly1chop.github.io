@@ -9,7 +9,7 @@ interface Props {
 
 const TableOfContent = ({ toc }: Props) => {
   const [current, setCurrent] = useState<string | null>(null);
-  const { headings } = useHeadingsDOM();
+  const headings = useHeadingsDOM();
 
   const formatId = (id: string) => {
     return id.replaceAll('-', '');
@@ -44,6 +44,12 @@ const TableOfContent = ({ toc }: Props) => {
     headings.forEach(heading => {
       observer.observe(heading);
     });
+
+    return () => {
+      headings.forEach(heading => {
+        observer.unobserve(heading);
+      });
+    };
   }, [headings]);
 
   return (
