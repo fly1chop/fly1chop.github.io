@@ -3,6 +3,7 @@ import { styles, TableOfContent, NotionContent } from '@/components/Posts';
 import { getAllPosts, getSinglePostBySlug } from '@/lib/notion';
 import { PostResponse } from '@/types/post';
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import { ExtendedRecordMap, PageBlock } from 'notion-types';
 import { getPageTableOfContents } from 'notion-utils';
 import { ParsedUrlQuery } from 'querystring';
@@ -26,6 +27,9 @@ const PostDetailPage = ({ recordMap, metadata }: PageProps) => {
   return (
     <>
       <Header title={metadata.title} />
+      <Link href={'/'} className={styles.backBtn}>
+        back
+      </Link>
       <div className={styles.post}>
         <NotionContent
           recordMap={recordMap}
