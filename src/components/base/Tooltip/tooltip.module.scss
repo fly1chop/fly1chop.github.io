@@ -3,6 +3,8 @@ $tooltip-arrow-size: 0.6rem;
 
 .tooltip__wrapper {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .tooltip__body {

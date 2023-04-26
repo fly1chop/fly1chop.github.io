@@ -2,19 +2,32 @@ import styles from './layout.module.scss';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import NavList from './nav-list';
 import { useRef } from 'react';
+import useClickAway from '@/hooks/useClickAway';
 
 const Nav = () => {
   const windowWidth = useWindowWidth();
   const btnRef = useRef<HTMLButtonElement>(null);
+  const navRef = useClickAway(e => {
+    const button = btnRef.current;
+    if (!button) return;
+
+    if (!button.classList.contains(styles.active)) return;
+    if (!(e.target instanceof HTMLElement)) return;
+    if (e.target.closest('#menu')) return;
+
+    button.setAttribute('aria-expanded', 'false');
+    button.classList.remove(styles.active);
+  });
 
   const handleClick = () => {
-    if (btnRef.current === null) return;
+    const button = btnRef.current;
+    if (!button) return;
 
-    const isOpen = btnRef.current.classList.contains('active');
+    const isOpen = button.classList.contains('active');
     const nextOpenState = String(!isOpen); // TS overrides toString() for booleans
 
-    btnRef.current.setAttribute('aria-expanded', nextOpenState);
-    btnRef.current.classList.toggle(styles.active);
+    button.setAttribute('aria-expanded', nextOpenState);
+    button.classList.toggle(styles.active);
   };
 
   return (
@@ -30,7 +43,7 @@ const Nav = () => {
           <div />
         </button>
       ) : null}
-      <nav className={styles.menuPanel} aria-labelledby="menu">
+      <nav className={styles.menuPanel} aria-labelledby="menu" ref={navRef}>
         <NavList />
       </nav>
     </header>

@@ -7,6 +7,7 @@
 
   @include respond($tablet) {
     flex-direction: column-reverse;
+    padding-top: 10rem;
   }
 
   > p {
@@ -15,7 +16,6 @@
     color: var(--text-sub);
 
     @include respond($tablet) {
-      top: 6rem;
       left: 1rem;
     }
   }
@@ -90,6 +90,8 @@
   padding-top: 10rem;
 
   @include respond($tablet) {
+    position: fixed;
+    top: 1.3rem;
     margin-left: 4.5rem;
     padding: 1rem;
     width: calc(100% - 4.5rem);

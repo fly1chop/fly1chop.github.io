@@ -14,7 +14,7 @@
     border-right: 1px solid var(--border-main);
 
     @include respond($tablet) {
-      padding: 6rem 1rem;
+      padding: 8rem 1rem;
 
       > main {
         padding: 0;
@@ -39,6 +39,18 @@
   }
 }
 
+.backBtn {
+  position: absolute;
+  top: 2.5rem;
+  margin-left: 2rem;
+  z-index: 100;
+
+  @include respond($tablet) {
+    position: fixed;
+    margin-left: 6rem;
+  }
+}
+
 .tags > li {
   margin-right: 0.5rem;
   display: inline-block;
@@ -51,6 +63,7 @@
 
   @include respond($tablet) {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 }
 

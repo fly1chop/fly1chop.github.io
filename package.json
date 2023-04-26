@@ -1,5 +1,6 @@
 {
   "name": "dev-blog",
+  "homepage": "https://fly1chop.github.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {

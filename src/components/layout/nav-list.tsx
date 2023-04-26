@@ -24,28 +24,16 @@ const NavList = () => {
   return (
     <ul className={styles.navList}>
       <li>
-        <ToolTip title="홈" position={position}>
+        <ToolTip title="Home" position={position}>
           <Link href="/">
-            <Image
-              src="/home.svg"
-              alt="Home"
-              width={25}
-              height={22.63}
-              aria-label="home"
-            />
+            <Image src="/home.svg" alt="Home" fill aria-label="home" />
           </Link>
         </ToolTip>
       </li>
       <li>
         <ToolTip title="Github" position={position}>
           <a href="https://github.com/fly1chop">
-            <Image
-              src="/github.svg"
-              alt="github"
-              width={25}
-              height={24.39}
-              aria-label="github"
-            />
+            <Image src="/github.svg" alt="github" fill aria-label="github" />
           </a>
         </ToolTip>
       </li>
@@ -55,34 +43,26 @@ const NavList = () => {
             <Image
               src="/linkedin.svg"
               alt="LinkedIn"
-              width={25}
-              height={24.39}
+              fill
               aria-label="LinkedIn"
             />
           </a>
         </ToolTip>
       </li>
       <li>
-        <ToolTip title="이력서" position={position}>
+        <ToolTip title="Resume" position={position}>
           <Link href="/resume">
-            <Image
-              src="/resume.svg"
-              alt="Resume"
-              width={25}
-              height={25}
-              aria-label="resume"
-            />
+            <Image src="/resume.svg" alt="Resume" fill aria-label="resume" />
           </Link>
         </ToolTip>
       </li>
       <li>
-        <ToolTip title="포트폴리오" position={position}>
+        <ToolTip title="Portfolio" position={position}>
           <Link href="/portfolio">
             <Image
               src="/portfolio.svg"
               alt="Portfolio"
-              width={25}
-              height={20.83}
+              fill
               aria-label="portfolio"
             />
           </Link>

@@ -3,18 +3,20 @@ import { styles, TableOfContent, NotionContent } from '@/components/Posts';
 import { getAllPosts, getSinglePostBySlug } from '@/lib/notion';
 import { PostResponse } from '@/types/post';
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 import { ExtendedRecordMap, PageBlock } from 'notion-types';
 import { getPageTableOfContents } from 'notion-utils';
 import { ParsedUrlQuery } from 'querystring';
+
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
-interface Props {
+interface PageProps {
   recordMap: ExtendedRecordMap;
   metadata: PostResponse;
 }
 
-const PostDetailPage = ({ recordMap, metadata }: Props) => {
+const PostDetailPage = ({ recordMap, metadata }: PageProps) => {
   if (!recordMap) {
     return null;
   }
@@ -25,6 +27,9 @@ const PostDetailPage = ({ recordMap, metadata }: Props) => {
   return (
     <>
       <Header title={metadata.title} />
+      <Link href={'/'} className={styles.backBtn}>
+        back
+      </Link>
       <div className={styles.post}>
         <NotionContent
           recordMap={recordMap}
@@ -42,27 +47,9 @@ const PostDetailPage = ({ recordMap, metadata }: Props) => {
 
 export default PostDetailPage;
 
-// const notionClient = new Client({
-//   auth: process.env.NOTION_ACCESS_TOKEN
-// });
-// const databaseId = process.env.NOTION_DATABASE_ID as string;
-
 export const getStaticProps: GetStaticProps = async context => {
   const { slug } = context.params as Params;
   const { recordMap, metadata } = await getSinglePostBySlug(slug);
-  // const response = await notionClient.databases.query({
-  //   database_id: databaseId,
-  //   filter: {
-  //     property: 'Slug',
-  //     formula: {
-  //       string: {
-  //         equals: slug
-  //       }
-  //     }
-  //   }
-  // });
-
-  // const page = response.results[0];
 
   return {
     props: {
