@@ -14,7 +14,7 @@
     border-right: 1px solid var(--border-main);
 
     @include respond($tablet) {
-      padding: 6rem 1rem;
+      padding: 8rem 1rem;
 
       > main {
         padding: 0;
@@ -51,6 +51,7 @@
 
   @include respond($tablet) {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
 }
 
