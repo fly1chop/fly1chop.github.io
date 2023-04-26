@@ -63,6 +63,7 @@ body {
   font-size: 1.4rem;
   font-weight: 400;
   background-color: var(--background-page);
+  overscroll-behavior-y: none;
 }
 
 a {

@@ -19,7 +19,7 @@ function useClickAway<T extends HTMLElement>(handler: (e: Event) => void) {
     };
 
     for (const eventName of events) {
-      document.addEventListener(eventName, handleEvent);
+      document.addEventListener(eventName, handleEvent, { passive: true });
     }
 
     return () => {
