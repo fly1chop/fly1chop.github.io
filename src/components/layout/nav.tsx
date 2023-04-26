@@ -8,21 +8,26 @@ const Nav = () => {
   const windowWidth = useWindowWidth();
   const btnRef = useRef<HTMLButtonElement>(null);
   const navRef = useClickAway(e => {
+    const button = btnRef.current;
+    if (!button) return;
+
+    if (!button.classList.contains(styles.active)) return;
     if (!(e.target instanceof HTMLElement)) return;
     if (e.target.closest('#menu')) return;
 
-    btnRef.current?.setAttribute('aria-expanded', 'false');
-    btnRef.current?.classList.remove(styles.active);
+    button.setAttribute('aria-expanded', 'false');
+    button.classList.remove(styles.active);
   });
 
   const handleClick = () => {
-    if (btnRef.current === null) return;
+    const button = btnRef.current;
+    if (!button) return;
 
-    const isOpen = btnRef.current.classList.contains('active');
+    const isOpen = button.classList.contains('active');
     const nextOpenState = String(!isOpen); // TS overrides toString() for booleans
 
-    btnRef.current.setAttribute('aria-expanded', nextOpenState);
-    btnRef.current.classList.toggle(styles.active);
+    button.setAttribute('aria-expanded', nextOpenState);
+    button.classList.toggle(styles.active);
   };
 
   return (
